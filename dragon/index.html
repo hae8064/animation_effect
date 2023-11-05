@@ -7,8 +7,49 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <section>
-      <h1 class="heading-1">Hello, World!</h1>
-    </section>
+    <style>
+      body {
+        background: black;
+        height: 6000px;
+        font-family: "nanumsqure";
+      }
+
+      div {
+        margin-top: 1000px;
+        color: white;
+        text-align: center;
+        opacity: 0;
+        transition: all 1s;
+      }
+    </style>
+
+    <div><h1>iPhone 15 출시</h1></div>
+    <div>충전포트를 USB-C 타입으로 바꿔달라고요?</div>
+    <div>그래서 충전포트를 제거 했습니다.</div>
+    <div><img src="/mountains.jpg" alt="" /></div>
+
+    <script>
+      let observer = new IntersectionObserver((e) => {
+        // 화면에 안보일 때도 이 함수가 실행이 돼서
+        e.forEach((박스) => {
+          // 화면에 보일 때만 로직을 추가해야함
+          if (박스.isIntersecting) {
+            박스.target.style.opacity = 1;
+            박스.target.style.transform = "rotate(0deg)";
+          } else {
+            // 박스가 화면에서 사라질 때 관련 로직
+            박스.target.style.opacity = 0;
+          }
+        });
+      });
+
+      let div = document.querySelectorAll("div");
+
+      // html 요소 감시 해주는 함수
+      observer.observe(div[0]);
+      observer.observe(div[1]);
+      observer.observe(div[2]);
+      observer.observe(div[3]);
+    </script>
   </body>
 </html>
